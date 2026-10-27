@@ -1,0 +1,79 @@
+:root {
+  --bg: #0a0d1a;
+  --bg-portal: rgba(52, 211, 153, 0.12);
+  --bg-purple: rgba(124, 58, 237, 0.14);
+  --surface: #141a2e;
+  --surface-2: #1c2340;
+  --border: rgba(148, 163, 184, 0.25);
+  --portal: #34d399;
+  --purple: #a855f7;
+  --yellow: #ffd23f;
+  --blue: #4fc3f7;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --radius-frame: 40px;
+  --radius-card: 18px;
+  --font-display: "Bangers", system-ui, sans-serif;
+  --font-body: "Rubik", system-ui, sans-serif;
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 60% 40% at 15% 10%, var(--bg-purple), transparent 70%),
+    radial-gradient(ellipse 55% 45% at 85% 90%, var(--bg-portal), transparent 70%),
+    radial-gradient(1.5px 1.5px at 20% 30%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 70% 20%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 40% 70%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1.5px 1.5px at 85% 55%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 10% 80%, rgba(255, 255, 255, 0.35), transparent);
+  line-height: 1.5;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--portal);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

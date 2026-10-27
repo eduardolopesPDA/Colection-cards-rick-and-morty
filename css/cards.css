@@ -1,0 +1,102 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(165deg, var(--surface-2) 0%, var(--surface) 100%);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--portal);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 24px rgba(52, 211, 153, 0.25);
+}
+
+.card__art {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 60%, rgba(52, 211, 153, 0.35), transparent 65%),
+    linear-gradient(180deg, #232b52 0%, #161d38 100%);
+  border-bottom: 2px solid var(--border);
+}
+
+.card__number {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  color: var(--yellow);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.card__portrait {
+  width: 84px;
+  height: 84px;
+  display: grid;
+  place-items: center;
+  color: var(--portal);
+  background: rgba(10, 13, 26, 0.55);
+  border: 2px solid rgba(52, 211, 153, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(52, 211, 153, 0.35);
+}
+
+.card__portrait svg {
+  width: 42px;
+  height: 42px;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+}
+
+.card__name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.card__meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.chip {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text);
+  background: rgba(148, 163, 184, 0.18);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.chip--alive {
+  color: #052e1c;
+  background: var(--portal);
+  border-color: var(--portal);
+  font-weight: 700;
+}
