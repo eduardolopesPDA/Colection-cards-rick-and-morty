@@ -55,69 +55,14 @@
       <p class="page-header__subtitle">Escolha uma carta e descubra o personagem</p>
     </header>
 
-    <section class="cards-grid" aria-label="Cartas de colecionador">
-
-      <article class="card">
-        <div class="card__art">
-          <span class="card__number">#001</span>
-          <div class="card__portrait" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/>
-            </svg>
-          </div>
-        </div>
-        <div class="card__body">
-          <h2 class="card__name">Rick Sanchez</h2>
-          <p class="card__meta">Earth (C-137)</p>
-          <div class="card__chips">
-            <span class="chip chip--alive">Alive</span>
-            <span class="chip">Human</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card__art">
-          <span class="card__number">#002</span>
-          <div class="card__portrait" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/>
-            </svg>
-          </div>
-        </div>
-        <div class="card__body">
-          <h2 class="card__name">Morty Smith</h2>
-          <p class="card__meta">Earth (C-137)</p>
-          <div class="card__chips">
-            <span class="chip chip--alive">Alive</span>
-            <span class="chip">Human</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card__art">
-          <span class="card__number">#003</span>
-          <div class="card__portrait" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/>
-            </svg>
-          </div>
-        </div>
-        <div class="card__body">
-          <h2 class="card__name">Summer Smith</h2>
-          <p class="card__meta">Earth (Replacement Dimension)</p>
-          <div class="card__chips">
-            <span class="chip chip--alive">Alive</span>
-            <span class="chip">Human</span>
-          </div>
-        </div>
-      </article>
-
+    <section class="cards-grid" id="cards-grid" aria-label="Cartas de colecionador" aria-busy="true">
     </section>
+
+    <p class="cards-status" id="cards-status" role="status" aria-live="polite">Carregando personagens...</p>
   </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/cards.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
