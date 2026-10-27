@@ -1,0 +1,120 @@
+.svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.portal-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: 140vmax;
+  height: 140vmax;
+  transform: translate(-50%, -50%);
+  border-radius: 46% 54% 52% 48% / 50% 46% 54% 50%;
+  overflow: hidden;
+  background: #6db63c;
+  contain: paint;
+  pointer-events: none;
+}
+
+.portal-bg__layer,
+.portal-bg__core,
+.portal-bg__speckles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.portal-bg__layer {
+  filter: url(#portal-wobble-2);
+}
+
+.portal-bg__layer--1 {
+  width: 104%;
+  height: 104%;
+  background: repeating-conic-gradient(
+    from 12deg,
+    #a8cf3f 0deg 24deg,
+    #8ec63d 24deg 48deg,
+    #b7d84a 48deg 70deg,
+    #79b838 70deg 96deg
+  );
+  animation: portal-bg-spin 70s linear infinite;
+}
+
+.portal-bg__layer--2 {
+  width: 78%;
+  height: 78%;
+  background: repeating-conic-gradient(
+    from -40deg,
+    #4caf50 0deg 30deg,
+    #3d9146 30deg 58deg,
+    #5cbf5e 58deg 84deg,
+    #2f7d3c 84deg 110deg
+  );
+  animation: portal-bg-spin 95s linear infinite reverse;
+}
+
+.portal-bg__layer--3 {
+  width: 52%;
+  height: 52%;
+  background: repeating-conic-gradient(
+    from 80deg,
+    #2e8b41 0deg 36deg,
+    #1e7a34 36deg 72deg,
+    #37984a 72deg 108deg,
+    #17662c 108deg 144deg
+  );
+  animation: portal-bg-spin 120s linear infinite;
+}
+
+.portal-bg__core {
+  width: 26%;
+  height: 26%;
+  background: radial-gradient(circle at 45% 40%, #2a7f3a 0%, #14562a 55%, #0d3d20 100%);
+  filter: blur(3px);
+  animation: portal-bg-pulse 8s ease-in-out infinite;
+}
+
+.portal-bg__speckles {
+  width: 96%;
+  height: 96%;
+  border-radius: 48% 52% 50% 50% / 52% 48% 52% 48%;
+  background-image:
+    radial-gradient(circle at 12% 20%, #ffffff 0 7px, transparent 8px),
+    radial-gradient(circle at 28% 8%, #ffffff 0 5px, transparent 6px),
+    radial-gradient(circle at 55% 5%, #ffffff 0 6px, transparent 7px),
+    radial-gradient(circle at 78% 14%, #ffffff 0 8px, transparent 9px),
+    radial-gradient(circle at 92% 34%, #ffffff 0 5px, transparent 6px),
+    radial-gradient(circle at 95% 62%, #ffffff 0 7px, transparent 8px),
+    radial-gradient(circle at 82% 86%, #ffffff 0 6px, transparent 7px),
+    radial-gradient(circle at 58% 95%, #ffffff 0 5px, transparent 6px),
+    radial-gradient(circle at 32% 93%, #ffffff 0 8px, transparent 9px),
+    radial-gradient(circle at 8% 74%, #ffffff 0 6px, transparent 7px),
+    radial-gradient(circle at 4% 46%, #ffffff 0 5px, transparent 6px),
+    radial-gradient(circle at 44% 16%, rgba(255, 255, 255, 0.75) 0 4px, transparent 5px),
+    radial-gradient(circle at 68% 78%, rgba(255, 255, 255, 0.75) 0 4px, transparent 5px),
+    radial-gradient(circle at 20% 58%, rgba(255, 255, 255, 0.6) 0 4px, transparent 5px);
+  animation: portal-bg-spin 140s linear infinite reverse;
+}
+
+@keyframes portal-bg-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes portal-bg-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}

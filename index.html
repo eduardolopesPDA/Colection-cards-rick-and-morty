@@ -11,9 +11,44 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/cards.css">
   <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/decor.css">
+  <link rel="stylesheet" href="css/portal-bg.css">
 </head>
 <body>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <filter id="portal-wobble-2" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="1" seed="21" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <div class="portal-bg" aria-hidden="true">
+    <div class="portal-bg__layer portal-bg__layer--1"></div>
+    <div class="portal-bg__layer portal-bg__layer--2"></div>
+    <div class="portal-bg__layer portal-bg__layer--3"></div>
+    <div class="portal-bg__core"></div>
+    <div class="portal-bg__speckles"></div>
+  </div>
+
+  <div class="portal portal--tl" aria-hidden="true">
+    <svg viewBox="0 0 200 200" fill="none">
+      <path d="M100 90 A15 15 0 0 1 120 100 A25 25 0 0 1 100 130 A35 35 0 0 1 60 100 A45 45 0 0 1 100 50 A55 55 0 0 1 160 100 A65 65 0 0 1 100 170 A75 75 0 0 1 20 100" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="100" cy="100" r="6" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <div class="portal portal--br" aria-hidden="true">
+    <svg viewBox="0 0 200 200" fill="none">
+      <path d="M100 90 A15 15 0 0 1 120 100 A25 25 0 0 1 100 130 A35 35 0 0 1 60 100 A45 45 0 0 1 100 50 A55 55 0 0 1 160 100 A65 65 0 0 1 100 170 A75 75 0 0 1 20 100" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="100" cy="100" r="6" fill="currentColor"/>
+    </svg>
+  </div>
+
   <main class="frame">
+    <span class="sticker sticker--tr" aria-hidden="true">Wubba Lubba Dub Dub!</span>
+    <span class="sticker sticker--bl" aria-hidden="true">Get Schwifty!</span>
+
     <header class="page-header">
       <p class="page-header__eyebrow">Rick and Morty</p>
       <h1 class="page-header__title">Colection Cards</h1>
