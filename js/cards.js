@@ -27,12 +27,72 @@ window.RickMortyCards = (function () {
     return "chip chip--unknown";
   }
 
+  function createSwirlSVG() {
+    const ns = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", "0 0 200 200");
+    svg.setAttribute("fill", "none");
+    svg.setAttribute("aria-hidden", "true");
+    svg.classList.add("card__cover-swirl");
+
+    const path = document.createElementNS(ns, "path");
+    path.setAttribute(
+      "d",
+      "M100 90 A15 15 0 0 1 120 100 A25 25 0 0 1 100 130 A35 35 0 0 1 60 100 A45 45 0 0 1 100 50 A55 55 0 0 1 160 100 A65 65 0 0 1 100 170 A75 75 0 0 1 20 100"
+    );
+    path.setAttribute("stroke", "currentColor");
+    path.setAttribute("stroke-width", "7");
+    path.setAttribute("stroke-linecap", "round");
+    svg.appendChild(path);
+
+    const circle = document.createElementNS(ns, "circle");
+    circle.setAttribute("cx", "100");
+    circle.setAttribute("cy", "100");
+    circle.setAttribute("r", "6");
+    circle.setAttribute("fill", "currentColor");
+    svg.appendChild(circle);
+
+    return svg;
+  }
+
+  function createCover() {
+    const cover = document.createElement("div");
+    cover.className = "card__cover";
+    cover.setAttribute("aria-hidden", "true");
+
+    const mark = document.createElement("span");
+    mark.className = "card__cover-mark";
+    mark.textContent = "?";
+
+    cover.append(createSwirlSVG(), mark);
+    return cover;
+  }
+
+  function createRevealButton(article) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "card__reveal";
+    button.setAttribute("aria-label", "Revelar carta");
+
+    button.addEventListener("click", function () {
+      article.classList.add("is-revealed");
+      button.hidden = true;
+      article.focus({ preventScroll: true });
+    });
+
+    return button;
+  }
+
   function createCard(character) {
     const rarity = getRarity(character);
 
     const article = document.createElement("article");
     article.className = "card";
     article.dataset.rarity = rarity;
+    article.tabIndex = -1;
+
+    const face = document.createElement("div");
+    face.className = "card__face";
 
     const art = document.createElement("div");
     art.className = "card__art";
@@ -79,7 +139,8 @@ window.RickMortyCards = (function () {
 
     chips.append(statusChip, speciesChip);
     body.append(name, meta, chips);
-    article.append(art, body);
+    face.append(art, body);
+    article.append(face, createCover(), createRevealButton(article));
 
     return article;
   }
