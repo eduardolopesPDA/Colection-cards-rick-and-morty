@@ -68,7 +68,7 @@ window.RickMortyCards = (function () {
     return cover;
   }
 
-  function createRevealButton(article) {
+  function createRevealButton(article, character) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "card__reveal";
@@ -77,9 +77,52 @@ window.RickMortyCards = (function () {
     button.addEventListener("click", function () {
       article.classList.add("is-revealed");
       button.hidden = true;
+      window.RickMortyProgress.reveal(character.id);
       article.focus({ preventScroll: true });
     });
 
+    return button;
+  }
+
+  function createHeartSVG() {
+    const ns = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
+
+    const path = document.createElementNS(ns, "path");
+    path.setAttribute(
+      "d",
+      "M12 21s-7-4.5-9.5-8.5C.5 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.2C14 6.2 15.5 5 17.5 5c4 0 6 4 4 7.5C19 16.5 12 21 12 21z"
+    );
+    svg.appendChild(path);
+
+    return svg;
+  }
+
+  function createFavoriteButton(character) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "card__favorite";
+    button.appendChild(createHeartSVG());
+
+    function sync() {
+      const active = window.RickMortyFavorites.has(character.id);
+      button.classList.toggle("is-fav", active);
+      button.setAttribute("aria-pressed", String(active));
+      button.setAttribute(
+        "aria-label",
+        active ? "Remover dos favoritos" : "Adicionar aos favoritos"
+      );
+    }
+
+    button.addEventListener("click", function () {
+      window.RickMortyFavorites.toggle(character.id);
+      sync();
+      document.dispatchEvent(new CustomEvent("favoriteschange"));
+    });
+
+    sync();
     return button;
   }
 
@@ -89,6 +132,7 @@ window.RickMortyCards = (function () {
     const article = document.createElement("article");
     article.className = "card";
     article.dataset.rarity = rarity;
+    article.dataset.id = String(character.id);
     article.tabIndex = -1;
 
     const face = document.createElement("div");
@@ -138,9 +182,27 @@ window.RickMortyCards = (function () {
     speciesChip.textContent = character.species;
 
     chips.append(statusChip, speciesChip);
-    body.append(name, meta, chips);
+
+    const footer = document.createElement("div");
+    footer.className = "card__footer";
+
+    const link = document.createElement("a");
+    link.className = "card__link";
+    link.href = "detalhes.html?id=" + character.id;
+    link.textContent = "Ver detalhes";
+
+    footer.append(link, createFavoriteButton(character));
+    body.append(name, meta, chips, footer);
     face.append(art, body);
-    article.append(face, createCover(), createRevealButton(article));
+
+    const cover = createCover();
+
+    if (window.RickMortyProgress.has(character.id)) {
+      article.classList.add("is-revealed");
+      article.append(face, cover);
+    } else {
+      article.append(face, cover, createRevealButton(article, character));
+    }
 
     return article;
   }

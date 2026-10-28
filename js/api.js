@@ -15,5 +15,28 @@ window.RickMortyAPI = (function () {
     return results.flat();
   }
 
-  return { listPage, listPages };
+  async function getCharacter(id) {
+    const response = await fetch(`${BASE_URL}/${id}`);
+    if (!response.ok) {
+      throw new Error(`Erro na API: ${response.status}`);
+    }
+    return response.json();
+  }
+
+  async function getEpisodes(urls, limit) {
+    const list = urls || [];
+    const slice = list.slice(0, limit);
+    const episodes = await Promise.all(
+      slice.map(async function (url) {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Erro na API: ${response.status}`);
+        }
+        return response.json();
+      })
+    );
+    return { episodes, remaining: Math.max(list.length - slice.length, 0) };
+  }
+
+  return { listPage, listPages, getCharacter, getEpisodes };
 })();

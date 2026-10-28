@@ -252,3 +252,53 @@
 .cards-status[hidden] {
   display: none;
 }
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.card__link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--portal);
+  text-decoration: none;
+}
+
+.card__link:hover {
+  text-decoration: underline;
+}
+
+.card__favorite {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.card__favorite:hover {
+  color: #e11d48;
+  transform: scale(1.12);
+}
+
+.card__favorite svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.card__favorite.is-fav {
+  color: #e11d48;
+}
+
+.card__favorite.is-fav svg {
+  fill: #e11d48;
+}
