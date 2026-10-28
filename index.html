@@ -55,6 +55,24 @@
       <p class="page-header__subtitle">Escolha uma carta e descubra o personagem</p>
     </header>
 
+    <div class="filters" id="rarity-filters" role="group" aria-label="Filtrar por raridade">
+      <button type="button" class="filter-chip is-active" data-rarity="all" aria-pressed="true">
+        Todas <span class="filter-chip__count">0</span>
+      </button>
+      <button type="button" class="filter-chip filter-chip--legendary" data-rarity="legendary" aria-pressed="false">
+        Lendária <span class="filter-chip__count">0</span>
+      </button>
+      <button type="button" class="filter-chip filter-chip--epic" data-rarity="epic" aria-pressed="false">
+        Épica <span class="filter-chip__count">0</span>
+      </button>
+      <button type="button" class="filter-chip filter-chip--rare" data-rarity="rare" aria-pressed="false">
+        Rara <span class="filter-chip__count">0</span>
+      </button>
+      <button type="button" class="filter-chip filter-chip--common" data-rarity="common" aria-pressed="false">
+        Comum <span class="filter-chip__count">0</span>
+      </button>
+    </div>
+
     <section class="cards-grid" id="cards-grid" aria-label="Cartas de colecionador" aria-busy="true">
     </section>
 
@@ -63,6 +81,7 @@
 
   <script src="js/api.js"></script>
   <script src="js/cards.js"></script>
+  <script src="js/filters.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

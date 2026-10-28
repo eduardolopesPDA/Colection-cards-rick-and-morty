@@ -1,4 +1,22 @@
 window.RickMortyCards = (function () {
+  const RARITY_LABELS = {
+    legendary: "Lendária",
+    epic: "Épica",
+    rare: "Rara",
+    common: "Comum",
+  };
+
+  function getRarity(character) {
+    const name = (character.name || "").toLowerCase();
+    if (name === "rick sanchez" || name.includes("smith")) {
+      return "legendary";
+    }
+    const bucket = character.id % 10;
+    if (bucket < 2) return "epic";
+    if (bucket < 5) return "rare";
+    return "common";
+  }
+
   function padNumber(id) {
     return String(id).padStart(3, "0");
   }
@@ -10,8 +28,11 @@ window.RickMortyCards = (function () {
   }
 
   function createCard(character) {
+    const rarity = getRarity(character);
+
     const article = document.createElement("article");
     article.className = "card";
+    article.dataset.rarity = rarity;
 
     const art = document.createElement("div");
     art.className = "card__art";
@@ -19,6 +40,10 @@ window.RickMortyCards = (function () {
     const number = document.createElement("span");
     number.className = "card__number";
     number.textContent = "#" + padNumber(character.id);
+
+    const rarityBadge = document.createElement("span");
+    rarityBadge.className = "card__rarity card__rarity--" + rarity;
+    rarityBadge.textContent = RARITY_LABELS[rarity];
 
     const image = document.createElement("img");
     image.className = "card__image";
@@ -28,7 +53,7 @@ window.RickMortyCards = (function () {
     image.width = 300;
     image.height = 300;
 
-    art.append(number, image);
+    art.append(number, rarityBadge, image);
 
     const body = document.createElement("div");
     body.className = "card__body";
@@ -67,5 +92,5 @@ window.RickMortyCards = (function () {
     container.appendChild(fragment);
   }
 
-  return { createCard, renderCards };
+  return { createCard, renderCards, getRarity, RARITY_LABELS };
 })();

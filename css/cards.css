@@ -15,6 +15,21 @@
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 24px rgba(52, 211, 153, 0.25);
 }
 
+.card[data-rarity="legendary"]:hover {
+  border-color: var(--yellow);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 26px rgba(255, 210, 63, 0.45);
+}
+
+.card[data-rarity="epic"]:hover {
+  border-color: var(--purple);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 26px rgba(168, 85, 247, 0.45);
+}
+
+.card[data-rarity="rare"]:hover {
+  border-color: var(--blue);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 26px rgba(79, 195, 247, 0.45);
+}
+
 .card__art {
   position: relative;
   aspect-ratio: 4 / 3;
@@ -35,6 +50,55 @@
   letter-spacing: 1px;
   color: var(--yellow);
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.card__rarity {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 3px 9px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.card__rarity--legendary {
+  color: #3b2f00;
+  background: var(--yellow);
+}
+
+.card__rarity--epic {
+  color: #fff;
+  background: var(--purple);
+}
+
+.card__rarity--rare {
+  color: #052e3a;
+  background: var(--blue);
+}
+
+.card__rarity--common {
+  color: #e2e8f0;
+  background: rgba(100, 116, 139, 0.9);
+}
+
+.card[data-rarity="legendary"] {
+  border-color: rgba(255, 210, 63, 0.75);
+}
+
+.card[data-rarity="epic"] {
+  border-color: rgba(168, 85, 247, 0.6);
+}
+
+.card[data-rarity="rare"] {
+  border-color: rgba(79, 195, 247, 0.6);
+}
+
+.card[hidden] {
+  display: none;
 }
 
 .card__image {

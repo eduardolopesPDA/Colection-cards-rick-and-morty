@@ -48,6 +48,77 @@
   gap: 28px;
 }
 
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  background: rgba(148, 163, 184, 0.16);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.filter-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--portal);
+}
+
+.filter-chip.is-active {
+  font-weight: 700;
+  background: var(--portal);
+  border-color: var(--portal);
+  color: #052e1c;
+}
+
+.filter-chip--legendary.is-active {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: #3b2f00;
+}
+
+.filter-chip--epic.is-active {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+}
+
+.filter-chip--rare.is-active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #052e3a;
+}
+
+.filter-chip--common.is-active {
+  background: #94a3b8;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.filter-chip__count {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(10, 13, 26, 0.35);
+}
+
+.filter-chip.is-active .filter-chip__count {
+  background: rgba(10, 13, 26, 0.2);
+}
+
 @media (max-width: 700px) {
   .frame {
     margin: 20px;
